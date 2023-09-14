@@ -1,0 +1,9 @@
+.column-container {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100%;
+  margin: 0;
+  scroll-margin: 8px;
+  vertical-align: top;
+  width: 272px;
+}

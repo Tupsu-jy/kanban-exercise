@@ -1,0 +1,13 @@
+# Dockerfile.backend
+FROM python:3.8-slim
+
+WORKDIR /backend
+
+COPY ./backend/requirements.txt /backend/
+RUN pip install -r requirements.txt
+
+COPY ./backend /backend
+
+EXPOSE 5000
+
+CMD ["python", "run.py"]

@@ -1,0 +1,15 @@
+# Directories
+node_modules/
+exampleStuff/
+
+# Configuration files
+.babelrc
+.eslintrc.js
+webpack.config.js
+yarn.lock
+package.json
+
+
+**/*.css
+**/*.scss
+public/

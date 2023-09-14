@@ -1,0 +1,31 @@
+.column {
+  background-color: var(--main-bg-color);
+  border-radius: var(--border-radius);
+  /*padding: 16px;Causes jankiness in dnd*/
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 272px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /*gap: 16px; Causes jankiness in dnd*/
+}
+
+.column-title {
+  font-weight: bold;
+  margin: 0;
+  font-size: 1rem;
+  align-self: flex-start;
+  /* These need to be defined here to prevent jankiness */
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.add-task-btn {
+  /* These need to be defined here to prevent jankiness in dnd*/
+  margin-top: 8px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}

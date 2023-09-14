@@ -1,0 +1,40 @@
+/* === Text Utilities === */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+:root {
+    --main-bg-color: #f8f2e8;
+    /* This is a pale sandy color */
+    --task-bg-color: #e8e1d5;
+    /* This is a deeper shade of the sandy color */
+    --border-radius: 15px;
+    --hover-color: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

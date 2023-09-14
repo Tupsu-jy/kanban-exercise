@@ -1,0 +1,9 @@
+.board-container {
+  display: flex;
+  justify-content: center;  /* ensures columns start from the left */
+  align-items: flex-start;      /* ensures columns start from the top */
+  padding: 20px;
+  gap: 20px;                    /* maintains a constant distance between columns */
+  flex-wrap: nowrap;            /* ensures columns are always in a row */
+  overflow-x: auto;             /* introduces horizontal scrolling if content overflows */
+}

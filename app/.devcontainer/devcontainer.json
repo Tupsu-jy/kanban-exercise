@@ -1,0 +1,23 @@
+{
+  "name": "Kanban Exercise Development Container",
+  "dockerComposeFile": "../../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/app",
+
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/sh",
+    "eslint.enable": true,
+    "eslint.run": "onSave",
+    "eslint.nodePath": "/usr/local/bin/node"
+  },
+
+  "extensions": [
+	"dbaeumer.vscode-eslint",
+	"esbenp.prettier-vscode",
+	"GitHub.copilot"
+],
+
+  "forwardPorts": [9000],
+
+  "postCreateCommand": "yarn install"
+}

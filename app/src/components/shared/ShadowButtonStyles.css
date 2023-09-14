@@ -1,0 +1,15 @@
+.shadow-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: var(--border-radius);
+  color: #333;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.shadow-button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}

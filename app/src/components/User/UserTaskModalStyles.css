@@ -1,0 +1,26 @@
+.user-task-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.user-task-modal .user-header {
+  padding: 10px 20px;
+  color: white;
+  font-size: 18px;
+}
+
+.user-task-modal .task-list {
+  list-style-type: none;
+  padding: 0 20px;
+  margin: 0;
+}
+
+.user-task-modal .task-list li {
+  padding: 5px 0;
+}

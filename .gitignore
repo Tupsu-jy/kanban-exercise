@@ -1,0 +1,9 @@
+app/node_modules/
+app/dist/
+*.log
+*.swp
+*.env
+webpack-stats.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

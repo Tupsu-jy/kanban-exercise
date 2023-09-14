@@ -1,0 +1,14 @@
+.avatar:hover {
+  transform: scale(1.1);
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  margin: 0 2px;
+}
