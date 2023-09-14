@@ -37,7 +37,7 @@ Task.propTypes = {
   taskData: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    assigned: PropTypes.arrayOf(PropTypes.number.isRequired),
+    assigned: PropTypes.arrayOf(PropTypes.string.isRequired),
     importance: PropTypes.number.isRequired,
   }).isRequired,
   onEditClick: PropTypes.func.isRequired,
