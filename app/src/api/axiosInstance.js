@@ -2,6 +2,7 @@ import axios from "axios";
 
 // Create an axios instance
 const instance = axios.create({
+  //render cant find the environment variable so its hardcoded for now
   baseURL: "https://kanban-backend-j6tc.onrender.com",
   timeout: 10000,
   headers: { "Content-Type": "application/json" },

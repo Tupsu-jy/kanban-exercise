@@ -137,15 +137,17 @@ function TaskModal({
         </div>
       </div>
 
-      {buttons.map((button) => (
-        <ShadowButton
-          key={button.label}
-          className={button.className}
-          onClick={button.onClick}
-        >
-          {button.label}
-        </ShadowButton>
-      ))}
+      <div className="task-modal-buttons">
+        {buttons.map((button) => (
+          <ShadowButton
+            key={button.label}
+            className={button.className}
+            onClick={button.onClick}
+          >
+            {button.label}
+          </ShadowButton>
+        ))}
+      </div>
     </div>
   );
 }

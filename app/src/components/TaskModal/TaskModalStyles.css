@@ -103,3 +103,19 @@
   border: 3px solid black;
   margin: 0 2px;
 }
+
+/* Buttons */
+.task-modal-buttons {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.delete-button:hover {
+  background-color: var(--hover-color-red);
+}
+
+.save-changes-button:hover {
+  background-color: var(--hover-color-blue);
+}

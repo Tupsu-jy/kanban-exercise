@@ -4,6 +4,7 @@ import Task from "../../components/Task";
 import PropTypes from "prop-types";
 import ModalLogicWrap from "../../components/shared/ModalLogicWrap";
 import EditTaskModalContainer from "../TaskModalContainers/EditTaskModalContainer";
+import "./TaskContainerStyles.css";
 
 /**
  * TaskContainer Component
@@ -21,6 +22,7 @@ function TaskContainer({ taskData, index }) {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            className="task-container"
           >
             <Task
               taskData={taskData}

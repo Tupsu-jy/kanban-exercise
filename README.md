@@ -45,7 +45,6 @@ This exercise uses React, yarn, webpack and Docker. In order to run the project 
   - Check the id of kanban-exercise_app.
   - docker rmi < ID of kanban-exercise_app >
 
-You will also need to add an environment variable for BASE_URL=https://kanban-backend-j6tc.onrender.com so that connection to backend works.
 
 When you to add npm packages you need to go to the app container: **docker exec -it kanban.exercise.com sh**
 Now you can run yarn commands like: **yarn add < package-name >**

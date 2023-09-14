@@ -10,6 +10,10 @@
   /*gap: 16px; Causes jankiness in dnd*/
 }
 
+.column-container{
+  min-height: 30px;
+}
+
 .column-title {
   font-weight: bold;
   margin: 0;
@@ -17,15 +21,16 @@
   align-self: flex-start;
   /* These need to be defined here to prevent jankiness */
   margin-top: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   margin-left: 16px;
   margin-right: 16px;
 }
 
 .add-task-btn {
-  /* These need to be defined here to prevent jankiness in dnd*/
-  margin-top: 8px;
+  /* These need to be defined here to prevent jankiness in dnd
+  margin-top: 8px;*/
   margin-bottom: 16px;
   margin-left: 16px;
   margin-right: 16px;
 }
+

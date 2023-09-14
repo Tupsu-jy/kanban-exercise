@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { BoardContext } from "../contexts/boardContext";
 import { moveTaskInsideColumn, moveTaskBetweenColumns } from "../api/column";
+import { ConfirmationContext } from "../contexts/confirmationContext";
 import _ from "lodash";
 
 // Hook that provides drag-and-drop functionality for tasks.
 const useDragAndDrop = () => {
   const { columns, setColumns } = useContext(BoardContext);
   const [isLoading, setIsLoading] = useState(false);
+  const confirm = useContext(ConfirmationContext);
 
   // Handles drag end event to update the board's state.
   const handleDragEnd = (result) => {
@@ -16,6 +18,9 @@ const useDragAndDrop = () => {
     // Ensure that any ongoing API call is complete before handling another drag event.
     if (isLoading) {
       console.log(
+        "Currently loading, returning without processing drag. Its not a bug, its a feature."
+      );
+      confirm(
         "Currently loading, returning without processing drag. Its not a bug, its a feature."
       );
       return;
@@ -111,6 +116,7 @@ const useDragAndDrop = () => {
         console.error("API call failed:", error);
         setColumns(originalColumns);
         setIsLoading(false);
+        confirm("Failed to reorder tasks. Please try again.");
       });
   };
 
@@ -168,6 +174,7 @@ const useDragAndDrop = () => {
         console.error("API call failed:", error);
         setColumns(originalColumns);
         setIsLoading(false);
+        confirm("Failed to move task to another column. Please try again.");
       });
   };
 

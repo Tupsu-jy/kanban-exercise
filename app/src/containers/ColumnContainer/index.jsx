@@ -5,8 +5,13 @@ import Column from "../../components/Column";
 import { BoardContext } from "../../contexts/boardContext";
 import AddTaskModalContainer from "../TaskModalContainers/AddTaskModalContainer";
 import ModalLogicWrap from "../../components/shared/ModalLogicWrap";
+import TaskContainer from "../../containers/TaskContainer";
 import "./ColumnContainerStyles.css";
 
+/**
+ * ColumnContainer represents a column on the board.
+ * It contains tasks that can be dragged and dropped.
+ */
 function ColumnContainer({ columnData }) {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const { tasks } = useContext(BoardContext);
@@ -19,23 +24,22 @@ function ColumnContainer({ columnData }) {
 
   return (
     <>
-      <Droppable key={columnData.id} droppableId={columnData.id}>
-        {(provided, snapshot) => (
-          <div
-            className="column-container"
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            <Column
-              columnData={columnData}
-              onAddClick={() => setAddModalOpen(true)}
-              columnTasks={columnTasks}
-              placeholder={provided.placeholder}
-              isDraggingOver={snapshot.isDraggingOver}
-            />
-          </div>
-        )}
-      </Droppable>
+      <Column columnData={columnData} onAddClick={() => setAddModalOpen(true)}>
+        <Droppable key={columnData.id} droppableId={columnData.id}>
+          {(provided) => (
+            <div
+              className="column-container"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {columnTasks.map((task, index) => (
+                <TaskContainer key={task.id} taskData={task} index={index} />
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </Column>
       <ModalLogicWrap isOpen={isAddModalOpen} setIsOpen={setAddModalOpen}>
         <AddTaskModalContainer
           setAddModalOpen={setAddModalOpen}

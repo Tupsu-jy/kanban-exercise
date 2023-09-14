@@ -1,0 +1,7 @@
+.task-container {
+  /* These need to be defined here in the immediete child of draggable to prevent jankiness in dnd*/
+  margin-top: 0px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
