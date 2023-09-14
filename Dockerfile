@@ -3,7 +3,9 @@ WORKDIR /app
 COPY ./app/package.json ./
 COPY ./app/yarn.lock ./
 RUN yarn install
-COPY . .
+COPY ./app .
 EXPOSE 9000
 CMD ["yarn", "start"]
+
+
 
