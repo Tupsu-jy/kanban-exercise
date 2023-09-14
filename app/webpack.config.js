@@ -72,9 +72,6 @@ module.exports = {
       template: "./public/index.html",
     }),
     new Dotenv(),
-    // new webpack.DefinePlugin({
-    //   "process.env.BASE_URL": JSON.stringify(process.env.BASE_URL),
-    // }),
 
     new MiniCssExtractPlugin(),
   ],
