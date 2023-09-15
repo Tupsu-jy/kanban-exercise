@@ -5,7 +5,7 @@ This project is a demonstration of our Kanban Board application UI. It captures 
 
 
 ## Frontend:
-The frontend of the Kanban Board is developed using React and offers a dynamic, user-friendly interface. It connects to psql database running on render. Smooth transitions are achieved by using optimistic updates to frontend state and then reverting should the backend update fail. Its demo version is running on https://kanban-exercise.onrender.com/
+The frontend of the Kanban Board is developed using React and offers a dynamic, user-friendly interface. It connects to psql database running on render. Smooth transitions are achieved by using optimistic updates to frontend state and then reverting should the backend update fail. Its demo version is running on https://kanban-exercise.onrender.com/ (it might be slow to start at the moment due to being on render)
 
 Here's what the directory structure signifies:
 
