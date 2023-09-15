@@ -21,7 +21,7 @@ src: This is where the main application logic resides.
 
 Webpack is used for bundling the application and other configuration-related files like package.json, yarn.lock, and webpack.config.js, manage dependencies and build processes.
 
-
+(ps. it seems i added a bug last night in my last commit. I wont fix it because im over the deadline, but im aware of it)
 
 ## Backend:
 The backend provides the necessary API endpoints to serve the frontend, ensuring seamless data flow and CRUD operations. The backend connects to a psql database on render and manages columns, tasks, users, and the relationships between them. It can be run as a docker container and it is currently running as such on https://kanban-backend-j6tc.onrender.com/ . 
