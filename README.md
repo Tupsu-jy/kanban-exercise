@@ -1,7 +1,7 @@
 
 # Kanban Exercise
 
-This project is a demonstration of our Kanban Board application UI. It captures the core features and functionalities typical of platforms like Trello. The application is divided into two parts: a React-based frontend and a python backend API. They are orchestrated using Docker.
+This project is a demonstration of our Kanban Board application UI. It captures the core features and functionalities typical of platforms like Trello. The application is divided into two parts: a React-based frontend and a python backend API. They are run using Docker.
 
 
 ## Frontend:
