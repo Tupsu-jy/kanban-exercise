@@ -1,0 +1,14 @@
+FROM node:14-alpine
+
+WORKDIR /frontend
+
+COPY ./package.json ./
+COPY ./yarn.lock ./
+
+RUN yarn install
+
+COPY . .
+
+EXPOSE ${FRONTEND_PORT}
+
+CMD ["yarn", "start:${ENVIRONMENT}"]

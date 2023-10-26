@@ -301,6 +301,23 @@ def is_db_ready():
     except subprocess.CalledProcessError:
         return False
 
+import time
+
+def wait_for_db_connection(retries=10, delay=6):
+    """Wait for the database to become available."""
+    
+    for i in range(retries):
+        if is_db_ready():
+            current_app.logger.info('Connected to the database successfully.')
+            return True
+        else:
+            current_app.logger.warning(
+                f"Can't connect to the database. Attempt {i + 1}/{retries}. Waiting for {delay} seconds before retrying.")
+            time.sleep(delay)
+    
+    current_app.logger.error('Failed to connect to the database after multiple attempts.')
+    return False
+
 
 # API Endpoints
 api.add_resource(UsersResource, "/user")
@@ -331,7 +348,7 @@ if __name__ == "__main__":
     with app.app_context():
         current_app.logger.info('Starting Flask server.')
 
-        if not is_db_ready():
+        if not wait_for_db_connection():
             current_app.logger.error('Database is not ready.')
             exit(1)
 

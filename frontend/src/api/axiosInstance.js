@@ -2,8 +2,9 @@ import axios from "axios";
 
 // Create an axios instance
 const instance = axios.create({
-  //render cant find the environment variable so its hardcoded for now
-  baseURL: "https://kanban-backend-j6tc.onrender.com",
+  //This does not actually directly access env variable, 
+  //that is done in webpack config. Should be renamed.
+  baseURL: process.env.BASE_URL,
   timeout: 10000,
   headers: { "Content-Type": "application/json" },
 });

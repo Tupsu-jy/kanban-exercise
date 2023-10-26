@@ -1,17 +1,18 @@
 {
   "name": "Python Backend Development Container",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "backend",
+  "dockerComposeFile": "../../docker-compose.yml",
+  "service": "kanban_backend",
   "workspaceFolder": "/backend",
-
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "python.pythonPath": "/usr/local/bin/python",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true
   },
-
-  "extensions": ["ms-python.python"],
-
-  "forwardPorts": [5000]
+  "extensions": [
+    "ms-python.python"
+  ],
+  "forwardPorts": [
+    5000
+  ]
 }

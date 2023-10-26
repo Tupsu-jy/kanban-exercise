@@ -2,7 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
+
+const isDevelopment = process.env.ENVIRONMENT !== 'production';
 
 module.exports = {
   entry: "./src/index.js",
@@ -10,7 +11,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
-  devServer: {
+  mode: isDevelopment ? 'development' : 'production',
+  devServer: isDevelopment ? {
     static: {
       directory: path.join(__dirname, "public"),
     },
@@ -19,7 +21,7 @@ module.exports = {
     host: "0.0.0.0",
     port: 9000,
     allowedHosts: ["kanban-exercise.onrender.com"],
-  },
+  } : undefined,
   devtool: "source-map",
   output: {
     filename: "bundle.js",
@@ -73,8 +75,9 @@ module.exports = {
       inject: true,
       template: "./public/index.html",
     }),
-    new Dotenv(),
-
     new MiniCssExtractPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL)
+    })
   ],
 };

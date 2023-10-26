@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --no-cache --config webpack.config.js"
+    "start:dev": "ENVIRONMENT=development webpack serve --no-cache --config webpack.config.js",
+    "start:prod": "ENVIRONMENT=production webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
