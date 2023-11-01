@@ -1,26 +1,23 @@
 version: "3"
 
 services:
-  kanban_frontend_dev:
+  kanban_frontend_prod:
     build:
       context: ./frontend
       dockerfile: Dockerfile.frontend
-      target: setup
-    container_name: kanban_frontend_dev.exercise.com
+      args:
+        ENVIRONMENT: production
+    container_name: kanban_frontend_prod.exercise.com
     environment:
       - BASE_URL=${BASE_URL}
-      - FRONTEND_PORT=${FRONTEND_PORT}
-    volumes:
-      - node_modules:/frontend/node_modules
-      - ./frontend:/frontend
     ports:
-      - "9000:9000"
+      - "9000:80"
 
-  kanban_backend_dev:
+  kanban_backend_prod:
     build:
       context: ./backend
       dockerfile: Dockerfile.backend
-    container_name: kanban_backend_dev.exercise.com
+    container_name: kanban_backend_prod.exercise.com
     environment:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
@@ -31,7 +28,7 @@ services:
 
   kanban_database:
     image: postgres:15
-    container_name_dev: kanban_database.exercise.com
+    container_name: kanban_database.exercise.com
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
