@@ -1,0 +1,24 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Docker Compose
+        run: docker-compose -f docker-compose.prod.yml up -d
+
+      - name: Install Cypress Dependencies
+        working-directory: ./e2e
+        run: npm install
+
+      - name: Run Cypress Tests
+        working-directory: ./e2e
+        run: npm run cy:run
+
+      - name: Shutdown
+        run: docker-compose -f docker-compose.prod.yml down
