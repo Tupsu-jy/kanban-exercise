@@ -33,6 +33,10 @@ jobs:
         working-directory: ./e2e
         run: npm install
 
+      - name: Install Cypress Binary
+        working-directory: ./e2e
+        run: npx cypress install
+
       - name: Verify Cypress Binary
         working-directory: ./e2e
         run: npx cypress verify
