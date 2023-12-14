@@ -33,6 +33,14 @@ jobs:
         working-directory: ./e2e
         run: npm install
 
+      - name: Wait for Frontend to be ready
+        run: |
+          echo "Waiting for frontend service to be ready..."
+          while ! nc -z localhost 9000; do   
+            sleep 1 # odottaa yhden sekunnin ja yrittää uudestaan
+          done
+          echo "Frontend service is up and running!"
+
       - name: Install Cypress Binary
         working-directory: ./e2e
         run: npx cypress install
