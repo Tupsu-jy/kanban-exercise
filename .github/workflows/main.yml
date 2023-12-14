@@ -18,6 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Cache Cypress binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
       - name: Set up Docker Compose
         run: docker-compose -f docker-compose.prod.yml up -d
 
