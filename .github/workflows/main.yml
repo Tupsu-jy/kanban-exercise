@@ -16,9 +16,13 @@ jobs:
         working-directory: ./e2e
         run: npm install
 
+      - name: Verify Cypress Binary
+        working-directory: ./e2e
+        run: npx cypress verify
+
       - name: Run Cypress Tests
         working-directory: ./e2e
-        run: npm run cy:run
+        run: npx cypress run
 
       - name: Shutdown
         run: docker-compose -f docker-compose.prod.yml down
