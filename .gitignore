@@ -1,5 +1,5 @@
-app/node_modules/
-app/dist/
+**/node_modules/
+**/dist/
 *.log
 *.swp
 *.env
