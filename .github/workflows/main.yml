@@ -5,6 +5,15 @@ on: [pull_request]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: http://localhost:9000
+      DB_NAME: temp_database
+      DB_USER: temp_username
+      DB_PASSWORD: temp_password
+      DB_HOST: kanban_database
+      POSTGRES_USER: temp_username
+      POSTGRES_PASSWORD: temp_password
+      POSTGRES_DB: temp_database
 
     steps:
       - uses: actions/checkout@v2
