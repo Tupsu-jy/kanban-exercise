@@ -4,7 +4,7 @@ on: [pull_request, push]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       BASE_URL: http://localhost:9000
       DB_NAME: temp_database
