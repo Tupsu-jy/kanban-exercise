@@ -53,11 +53,6 @@ jobs:
         working-directory: ./e2e
         run: npx cypress verify
 
-      # Run Cypress Tests
-      - name: Run Cypress Tests
-        working-directory: ./e2e
-        run: npx cypress run
-
       # Print Backend logs
       - name: Print Backend logs
         run: |
@@ -75,6 +70,11 @@ jobs:
         run: |
           echo "Printing frontend console logs..."
           docker-compose -f docker-compose.prod.yml logs kanban_frontend_prod
+
+      # Run Cypress Tests
+      - name: Run Cypress Tests
+        working-directory: ./e2e
+        run: npx cypress run
 
       # Shutdown
       - name: Shutdown
