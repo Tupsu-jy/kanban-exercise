@@ -40,7 +40,7 @@ jobs:
       - name: Wait for Frontend to be ready
         run: |
           echo "Waiting 60 seconds for frontend service to be ready..."
-          sleep 60
+          sleep 180
           echo "Continuing to the next step..."
 
       # Install Cypress Binary
