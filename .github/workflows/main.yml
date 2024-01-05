@@ -48,8 +48,22 @@ jobs:
       # Check if the backend is serving tasks
       - name: Check Backend for Tasks
         run: |
-          sleep 10  # Odottaa, että backend on varmasti käynnissä.
-          curl -f http://localhost:5000/task
+          max_attempts=15
+          attempt=1
+          while [[ $attempt -le $max_attempts ]]; do
+            echo "Attempt $attempt of $max_attempts: Checking if backend is serving tasks..."
+            if curl -f http://localhost:5000/task; then
+              echo "Success: Backend is serving tasks."
+              break
+            fi
+            echo "Backend not ready yet. Retrying in 10 seconds..."
+            sleep 10
+            ((attempt++))
+          done
+          if [[ $attempt -gt $max_attempts ]]; then
+            echo "Failed to connect to backend after $max_attempts attempts."
+            exit 1
+          fi
 
       # Install Cypress Dependencies
       - name: Install Cypress Dependencies
