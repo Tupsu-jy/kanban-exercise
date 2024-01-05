@@ -45,6 +45,12 @@ jobs:
           done
           echo "Database is up and running and query executed successfully!"
 
+      # Check if the backend is serving tasks
+      - name: Check Backend for Tasks
+        run: |
+          sleep 10  # Odottaa, että backend on varmasti käynnissä.
+          curl -f http://localhost:5000/task
+
       # Install Cypress Dependencies
       - name: Install Cypress Dependencies
         working-directory: ./e2e
