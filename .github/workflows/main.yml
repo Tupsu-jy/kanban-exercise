@@ -27,6 +27,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cypress-
 
+      # Check available ports
+      - name: Check available ports
+        run: sudo netstat -tuln
+
       # Set up Docker Compose
       - name: Set up Docker Compose
         run: docker-compose -f docker-compose.prod.yml up -d
