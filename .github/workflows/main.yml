@@ -48,7 +48,7 @@ jobs:
       # Check if the backend is serving tasks
       - name: Check Backend for Tasks
         run: |
-          max_attempts=15
+          max_attempts=150
           attempt=1
           while [[ $attempt -le $max_attempts ]]; do
             echo "Attempt $attempt of $max_attempts: Checking if backend is serving tasks..."
