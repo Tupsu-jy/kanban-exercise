@@ -33,7 +33,7 @@ jobs:
 
       # Set up Docker Compose
       - name: Set up Docker Compose
-        run: docker-compose -f docker-compose.prod.yml up -d
+        run: docker compose -f docker-compose.prod.yml up --build
 
       # Check Database Connection
       - name: Check Database Connection
