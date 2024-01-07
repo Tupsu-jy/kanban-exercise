@@ -1,3 +1,4 @@
+import time
 from flask import Flask, jsonify, request, current_app
 from flask_cors import CORS
 from flask_restful import Api, Resource
@@ -301,11 +302,10 @@ def is_db_ready():
     except subprocess.CalledProcessError:
         return False
 
-import time
 
-def wait_for_db_connection(retries=10, delay=6):
+def wait_for_db_connection(retries=100, delay=6):
     """Wait for the database to become available."""
-    
+
     for i in range(retries):
         if is_db_ready():
             current_app.logger.info('Connected to the database successfully.')
@@ -314,8 +314,9 @@ def wait_for_db_connection(retries=10, delay=6):
             current_app.logger.warning(
                 f"Can't connect to the database. Attempt {i + 1}/{retries}. Waiting for {delay} seconds before retrying.")
             time.sleep(delay)
-    
-    current_app.logger.error('Failed to connect to the database after multiple attempts.')
+
+    current_app.logger.error(
+        'Failed to connect to the database after multiple attempts.')
     return False
 
 
