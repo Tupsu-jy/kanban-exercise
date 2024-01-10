@@ -1,3 +1,4 @@
+-- Enable extension for UUID generation
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Users table
@@ -21,6 +22,9 @@ CREATE TABLE IF NOT EXISTS columns (
     task_ids UUID[] DEFAULT ARRAY[]::UUID[],
     name TEXT NOT NULL
 );
+
+-- Clear existing data from tables
+TRUNCATE TABLE users, tasks, columns RESTART IDENTITY CASCADE;
 
 -- Seed data with predefined UUIDs
 -- Users

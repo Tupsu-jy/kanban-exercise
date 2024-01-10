@@ -18,92 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Cache Cypress binary
-      - name: Cache Cypress binary
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/Cypress
-          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-cypress-
-
-      # Check available ports
-      - name: Check available ports
-        run: sudo netstat -tuln
-
       # Set up Docker Compose
       - name: Set up Docker Compose
         run: docker compose -f docker-compose.prod.yml up --build -d
-
-      # Check Database Connection
-      - name: Check Database Connection
-        run: |
-          sleep 20
-          until PGPASSWORD=$DB_PASSWORD psql -h localhost -p 5432 -U $DB_USER -d $DB_NAME -c "SELECT * FROM tasks;"; do
-            echo "Waiting for database to be ready..."
-            sleep 10
-          done
-          echo "Database is up and running and query executed successfully!"
-
-      # Check if the backend is serving tasks
-      - name: Check Backend for Tasks
-        run: |
-          max_attempts=150
-          attempt=1
-          while [[ $attempt -le $max_attempts ]]; do
-            echo "Attempt $attempt of $max_attempts: Checking if backend is serving tasks..."
-            if curl -f http://localhost:5000/task; then
-              echo "Success: Backend is serving tasks."
-              break
-            fi
-            echo "Backend not ready yet. Retrying in 10 seconds..."
-            sleep 10
-            ((attempt++))
-          done
-          if [[ $attempt -gt $max_attempts ]]; then
-            echo "Failed to connect to backend after $max_attempts attempts."
-            exit 1
-          fi
 
       # Install Cypress Dependencies
       - name: Install Cypress Dependencies
         working-directory: ./e2e
         run: npm install
-
-      # Wait for Frontend to be ready
-      - name: Wait for Frontend to be ready
-        run: |
-          echo "Waiting 60 seconds for frontend service to be ready..."
-          sleep 180
-          echo "Continuing to the next step..."
-
-      # Install Cypress Binary
-      - name: Install Cypress Binary
-        working-directory: ./e2e
-        run: npx cypress install
-
-      # Verify Cypress Binary
-      - name: Verify Cypress Binary
-        working-directory: ./e2e
-        run: npx cypress verify
-
-      # Print Backend logs
-      - name: Print Backend logs
-        run: |
-          echo "Printing backend logs..."
-          docker-compose -f docker-compose.prod.yml logs kanban_backend_prod
-
-      # Print Database logs
-      - name: Print Database logs
-        run: |
-          echo "Printing database logs..."
-          docker-compose -f docker-compose.prod.yml logs kanban_database
-
-      # Print Frontend logs (jos logit tulostetaan konsoliin)
-      - name: Print Frontend logs
-        run: |
-          echo "Printing frontend console logs..."
-          docker-compose -f docker-compose.prod.yml logs kanban_frontend_prod
 
       # Run Cypress Tests
       - name: Run Cypress Tests
