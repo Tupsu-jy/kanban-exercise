@@ -18,10 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Set up Docker Compose
-      - name: Set up Docker Compose
-        run: docker compose -f docker-compose.prod.yml up --build -d
-
       # Cache Cypress binary
       - name: Cache Cypress binary
         uses: actions/cache@v2
@@ -30,6 +26,15 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
+
+      # Set up Docker Compose
+      - name: Set up Docker Compose
+        run: docker compose -f docker-compose.prod.yml up --build -d
+
+      # Install Cypress Binary
+      - name: Install Cypress Binary
+        working-directory: ./e2e
+        run: npx cypress install
 
       # Install Cypress Dependencies
       - name: Install Cypress Dependencies
