@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  kanban_frontend_prod:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+      args:
+        ENVIRONMENT: production
+    container_name: kanban_frontend_prod.exercise.com
+    environment:
+      - BASE_URL=${BASE_URL}
+    ports:
+      - "9000:80"
+
+  kanban_backend_prod:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    container_name: kanban_backend_prod.exercise.com
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+    ports:
+      - "5000:5000"
+
+  kanban_database:
+    image: postgres:15
+    container_name: kanban_database.exercise.com
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./developmentdb/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+volumes:
+  node_modules:

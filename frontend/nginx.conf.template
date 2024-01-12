@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        root /usr/share/nginx/html;
+
+        add_header 'Access-Control-Allow-Origin' '*';
+        # Set BASE_URL as a javascript global variable
+        sub_filter '</head>' '<script>window.BASE_URL="$BASE_URL";</script></head>';
+        sub_filter_once on;
+        try_files $uri $uri/ /index.html;
+    }
+}

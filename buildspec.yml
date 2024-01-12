@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Logging in to Amazon ECR..."
+      - aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 0054-4207-3802.dkr.ecr.eu-north-1.amazonaws.com
+  build:
+    commands:
+      - echo "Building frontend Docker image..."
+      - docker build -t frontend-image -f ./frontend/Dockerfile.frontend ./frontend
+      - echo "Building backend Docker image..."
+      - docker build -t backend-image -f ./backend/Dockerfile.backend ./backend
+  post_build:
+    commands:
+      - echo "Tagging frontend Docker image..."
+      - docker tag frontend-image:latest 0054-4207-3802.dkr.ecr.eu-north-1.amazonaws.com/frontend-repo:latest
+      - echo "Pushing frontend Docker image..."
+      - docker push 0054-4207-3802.dkr.ecr.eu-north-1.amazonaws.com/kanban_frontend:latest
+      - echo "Tagging backend Docker image..."
+      - docker tag backend-image:latest 0054-4207-3802.dkr.ecr.eu-north-1.amazonaws.com/backend-repo:latest
+      - echo "Pushing backend Docker image..."
+      - docker push 0054-4207-3802.dkr.ecr.eu-north-1.amazonaws.com/kanban_backend:latest
+
