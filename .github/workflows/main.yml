@@ -22,6 +22,15 @@ jobs:
       - name: Set up Docker Compose
         run: docker compose -f docker-compose.prod.yml up --build -d
 
+      # Cache Cypress binary
+      - name: Cache Cypress binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
       # Install Cypress Dependencies
       - name: Install Cypress Dependencies
         working-directory: ./e2e
