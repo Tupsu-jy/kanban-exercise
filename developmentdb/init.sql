@@ -44,11 +44,16 @@ INSERT INTO tasks (id, name, assigned, description, importance) VALUES
 ('f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task2', ARRAY['b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description2', 2),
 ('010ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task3', ARRAY['d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description3', 0),
 ('021ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task4', ARRAY['e1eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description4', 2),
-('031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task5', ARRAY['f1eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '95e53e16-da0b-45b0-ad8b-d1afc91c473c']::UUID[], 'Description5', 1);
+('031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task5', ARRAY['f1eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '95e53e16-da0b-45b0-ad8b-d1afc91c473c']::UUID[], 'Description5', 1),
+('041ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task6', ARRAY['a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description6', 1),
+('051ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task7', ARRAY['b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description7', 2),
+('061ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task8', ARRAY['c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description8', 0),
+('071ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task9', ARRAY['d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description9', 1),
+('081ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task10', ARRAY['e1eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description10', 2);
 
 -- Columns with task assignments
 INSERT INTO columns (id, task_ids, name) VALUES 
-('020ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column1'), 
-('030ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['010ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column2'),
-('040ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['021ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column3'),
-('050ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column4');
+('020ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '041ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column1'), 
+('030ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['010ebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '051ebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '061ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column2'),
+('040ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['021ebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '071ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column3'),
+('050ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '081ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column4');
