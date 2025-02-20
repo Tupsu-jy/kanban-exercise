@@ -1,3 +1,5 @@
+# TODO: tää on paskaa. ei oo mitään oikeata prod konttia.
+
 version: "3"
 
 services:

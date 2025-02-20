@@ -1,0 +1,15 @@
+# Dockerfile.cypress
+FROM cypress/included:12.10.0
+
+# Määrittele työskentelyhakemisto kontissa
+WORKDIR /e2e
+
+# Kopioi tarvittavat tiedostot (oletuksena cypress-testit ovat ./cypress ja konfiguraatiot projektin juuressa)
+COPY cypress.config.js package.json package-lock.json* ./
+COPY ./cypress ./cypress
+
+# Asenna mahdolliset lisäriippuvuudet, jos niitä tarvitaan
+RUN npm install
+
+# Suoritetaan Cypress-testit
+CMD ["npm", "run", "cy:docker"]

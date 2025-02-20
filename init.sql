@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS columns (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     task_ids UUID[] DEFAULT ARRAY[]::UUID[],
     name TEXT NOT NULL,
-    company TEXT NOT NULL DEFAULT 'demo'
+    company TEXT NOT NULL DEFAULT 'demo',
+    position INTEGER
 );
 
 -- Clear existing data from tables
@@ -50,9 +51,9 @@ INSERT INTO tasks (id, name, assigned, description, importance, company) VALUES
 ('021ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task4', ARRAY['e1eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Description4', 2, 'demo'),
 ('031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, 'Task5', ARRAY['f1eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', '95e53e16-da0b-45b0-ad8b-d1afc91c473c']::UUID[], 'Description5', 1, 'demo');
 
--- Columns with task assignments
-INSERT INTO columns (id, task_ids, name, company) VALUES 
-('020ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column1', 'demo'), 
-('030ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['010ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column2', 'demo'),
-('040ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['021ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column3', 'demo'),
-('050ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column4', 'demo');
+-- Columns with task assignments in order
+INSERT INTO columns (id, task_ids, name, company, position) VALUES 
+('020ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column1', 'demo', 1), 
+('030ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['010ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column2', 'demo', 2),
+('040ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['021ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column3', 'demo', 3),
+('050ebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::UUID, ARRAY['031ebc99-9c0b-4ef8-bb6d-6bb9bd380a11']::UUID[], 'Column4', 'demo', 4);

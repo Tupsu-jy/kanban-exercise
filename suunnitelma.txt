@@ -1,0 +1,69 @@
+
+# Kanban Exercise
+
+TAVOITTEET:
+
+cypress testejä lisätään
+    -demonäkymä on testausta varten
+    -testiid:t? ne luodaan tietokannan arvojen uuid perusteella. voi käyttää testeihin
+    -tarvitaan jokin tietokanna alustus testejä varten. pitää tehdä jokin alustus jota voi käyttää vain devkantaa varten.
+    -oma kontti testeille jottan saadaa aina oikea ympäristä mm alustusta varten ja CI/CD varten
+
+yrityskohtainen näkymä
+	-slugi määrittele mitä otetaan tietokannasta
+	-tietokanta uusiksi (company joka taulun joka riville)
+
+tietokannan uudistus
+    -uusi company taulu joka sisältää slugin ja id:n joka on ulkoavaimena kaikissa muissa tauluissa??
+    -miten lisäillään uusia hakukirjeitä helposti?
+    -cv sivu sama kaikilla. voi olla fronttiin kovakoodattu
+
+navbar
+	-käännökset
+	-esittelysivut
+
+ulkoasun parantaminen
+    -kaikkee epämääräistä emt
+
+backend/frontend integraatiossa oli jotain ongelmia
+    -one source of truth tarvitaan
+    -synkronoidaan monen käyttäjän muutokset keskenään
+
+hostaus ja CI/CD
+    -oma palvelin(vanha läppäri, asennetaan arch koska meemi :D)
+    -joku ilmainen. pitää selvitellä. (ei hyvä idea varmaan)
+    -jenkins ja hostaus kummatkin vanhalla läppärillä, joka pidetään aina päällä ja nettiyhteydessä
+    -ostetaan jokin domaini (jaakkoylinenkanban.fi)
+
+kielet
+    -i18n
+    -voidaan tehdä monelle kielelle. ensin tehdään englanti ja autokäännetään copypaste muut
+
+docker setup
+    -yksi compose devausta varten, sisältää devfrontendin, devbackendin, tietokannan. devatessa testit ajetaan kontin ulkopuolella
+    -toinen compose testeille, sisältää testikontin, prodfrontin, prodbackin, devkannan. käytetään CI/CD jenkinsissä
+    -kolmas compose prodeille, sisältää prodfrontin, prodbackin, prodkannan
+    -kahdet env muuttuja testeille riippuen siitä ajetaanko testit kontissa vai normisti. 
+
+MIETINNÄT:
+
+env muuttuja sekoilut
+    -testien tuplamuuttujat pitää tarkistaa
+    -muutenkin pitää tarkistaa... vai pitääkö? jos nyt kuitenkin toimii jo? ehkä mä tein asiat aikoinaan hyvin
+
+testien demokannan alustusfunktio
+    -melkein testausvaiheessa
+
+TURHAT TAVOITTEET MITÄ EI VARMAAN TEHDÄ:
+
+siirrytään typeen koska parempi
+    -tän vois ehkä tehdä oikeesti. llm ehkä osaisi tehdä enimmäkseen
+
+java BE myös koska lesoilu
+
+hostaus pilvessä
+    -maksaa joten ei tehdä
+
+responsiivisuus
+    -vaatii liikaa aikaa
+    -ei tätä oo mobiilille meinattukkaan

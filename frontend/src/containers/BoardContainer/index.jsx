@@ -8,10 +8,7 @@ import "./BoardContainerStyles.css";
 function BoardContainer() {
   const { columns } = useContext(BoardContext);
 
-  const COLUMN_ORDER = ["Backlog", "In progress", "In testing", "Done"];
-  const orderedColumns = columns.sort(
-    (a, b) => COLUMN_ORDER.indexOf(a.name) - COLUMN_ORDER.indexOf(b.name)
-  );
+  const orderedColumns = columns.sort((a, b) => a.position - b.position);
 
   const handleDragEnd = useDragAndDrop();
 
